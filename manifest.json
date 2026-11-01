@@ -1,0 +1,16 @@
+{
+  "name": "工作台",
+  "short_name": "工作台",
+  "description": "个人工作台：每日计划、想法速记、锻炼、理财、知识、备忘录、周复盘",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F8FD",
+  "theme_color": "#E7F1FC",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
