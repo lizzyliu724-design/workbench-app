@@ -17,6 +17,20 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
   if (e.request.method !== 'GET') return;
+  var req = e.request;
+  var isPage = req.mode === 'navigate' || req.url.indexOf('index.html') > -1;
+  if (isPage) {
+    e.respondWith(
+      fetch(req).then(function (res) {
+        var copy = res.clone();
+        caches.open(CACHE).then(function (c) { c.put(req, copy); });
+        return res;
+      }).catch(function () {
+        return caches.match(req).then(function (hit) { return hit || caches.match('./index.html'); });
+      })
+    );
+    return;
+  }
   e.respondWith(
     caches.match(e.request).then(function (hit) {
       if (hit) return hit;
